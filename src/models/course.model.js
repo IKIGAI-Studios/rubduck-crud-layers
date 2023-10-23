@@ -1,5 +1,9 @@
 export const courseModel = {
     id,
     title,
-    description
+    description,
+    language
 }
+
+
+
