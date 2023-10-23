@@ -1,0 +1,33 @@
+{
+  "name": "rubduck-crud-layers",
+  "version": "1.0.0",
+  "description": "rubduck crud",
+  "main": "index.js",
+  "scripts": {
+    "test": "text.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IKIGAI-Studios/rubduck-crud-layers.git"
+  },
+  "keywords": [
+    "rubduck",
+    "duck",
+    "dev",
+    "crud"
+  ],
+  "author": "Ikigai AB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IKIGAI-Studios/rubduck-crud-layers/issues"
+  },
+  "homepage": "https://github.com/IKIGAI-Studios/rubduck-crud-layers#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.2.0",
+    "mongoose": "^7.6.3",
+    "nodemon": "^3.0.1"
+  }
+}
