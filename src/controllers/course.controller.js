@@ -1,20 +1,35 @@
 import { courseModel } from "../models/course.model";
 
-export function createCourse({title, description, language}) {
-    const newCourse = courseModel({title, description, language});
-    // Aquí creas el curso en la base de datos de mongo usando el modelo
+export function createCourse({ title, description, language }) {
+	try {
+		const newCourse = courseModel({ title, description, language });
+		newCourse.save();
+	} catch (error) {
+		return error;
+	}
 }
-export function readCourse({id}) {
-    // Aquí traes el curso desde la base de datos de mongo
-    return newCourse
+export function readCourse({ id }) {
+	try {
+		courseModel.findById(id);
+		return newCourse;
+	} catch (error) {
+		return error;
+	}
 }
 
-export function updateCourse({id, title, description, language}) {
-    const newCourse = courseModel({title, description, language});
-    // Aquí actualizas el curso en la base de datos de mongo
+export function updateCourse({ id, title, description, language }) {
+	try {
+		const newCourse = courseModel({ title, description, language });
+		courseModel.findByIdAndUpdate(id, { title, description, language });
+	} catch (error) {
+		return error;
+	}
 }
 
-export function deleteCourse({id}) {
-    // Aquí borras el curso en la base de datos de mongo usando el modelo
+export function deleteCourse({ id }) {
+	try {
+		courseModel.findByIdAndDelete(id);
+	} catch (error) {
+		return error;
+	}
 }
-

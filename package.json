@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "rubduck crud",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "text.js"
+    "test": "text.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
