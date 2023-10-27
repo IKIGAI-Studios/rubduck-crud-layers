@@ -10,7 +10,7 @@ export class CourseController {
 	static async getById(req, res) {
 		const { id } = req.params
 		const course = await CourseModel.getById({ id })
-		if (course) return res.json(movie)
+		if (course) return res.json(course)
 		res.status(404).json({ message: 'Curso no encontrado' })
 	}
 
