@@ -1,35 +1,43 @@
-import { courseModel } from "../models/course.model";
+import { CourseModel } from '../models/course.model.js'
 
-export function createCourse({ title, description, language }) {
-	try {
-		const newCourse = courseModel({ title, description, language });
-		newCourse.save();
-	} catch (error) {
-		return error;
-	}
-}
-export function readCourse({ id }) {
-	try {
-		courseModel.findById(id);
-		return newCourse;
-	} catch (error) {
-		return error;
-	}
-}
+export class CourseController {
 
-export function updateCourse({ id, title, description, language }) {
-	try {
-		const newCourse = courseModel({ title, description, language });
-		courseModel.findByIdAndUpdate(id, { title, description, language });
-	} catch (error) {
-		return error;
+	static async getAll(req, res) {
+		const courses = await CourseModel.getAll()
+    	res.json(courses)
 	}
-}
 
-export function deleteCourse({ id }) {
-	try {
-		courseModel.findByIdAndDelete(id);
-	} catch (error) {
-		return error;
+	static async getById(req, res) {
+		const { id } = req.params
+		const course = await CourseModel.getById({ id })
+		if (course) return res.json(movie)
+		res.status(404).json({ message: 'Curso no encontrado' })
+	}
+
+	static async create(req, res) {
+		console.log(req.body)
+		const newCourse = await CourseModel.create({ data: req.body })
+	
+		res.status(201).json(newCourse)
+	}
+
+	static async delete(req, res) {
+		const { id } = req.params
+
+		const result = await CourseModel.delete({ id })
+
+		if (result === false) {
+		return res.status(404).json({ message: 'Curso no encontrado' })
+		}
+
+		return res.json({ message: 'Curso eliminado' })
+	}
+
+	static async update(req, res) {
+		const { id } = req.params
+
+		const updatedCourse = await CourseModel.update({ id, data: req.body })
+
+		return res.json(updatedCourse)
 	}
 }

@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "text.js",
-    "server": "nodemon index.js"
+    "test": "test.js",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

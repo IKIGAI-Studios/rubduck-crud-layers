@@ -1,32 +1,24 @@
-import { set, connect } from "mongoose";
+import { MongoClient, ServerApiVersion } from 'mongodb'
 import dotenv from "dotenv";
 
 dotenv.config();
 
-/**
- * Conecta a la base de datos de MongoDB utilizando la configuración especificada en la variable de entorno MONGO_CONNECTION_LINK.
- * Se recomienda llamar a esta función al iniciar la aplicación para establecer la conexión con la base de datos.
- */
-function connectMongoDB() {
-	const linkMongoDB = process.env.MONGO_CONNECTION_LINK;
+const client = new MongoClient(process.env.MONGO_CONNECTION_LINK, {
+	serverApi: {
+	  version: ServerApiVersion.v1,
+	  strict: false,
+	  deprecationErrors: true
+	}
+})
 
-	/**
-	 * Establece la configuración "strictQuery" en false para permitir consultas menos estrictas en la base de datos.
-	 */
-	set("strictQuery", false);
-
-	/**
-	 * Conecta a la base de datos de MongoDB utilizando el enlace especificado.
-	 * @returns {Promise<void>} Promesa que se resuelve cuando la conexión es exitosa.
-	 * @throws {Error} Error si la conexión a la base de datos falla.
-	 */
-	connect(linkMongoDB)
-		.then(() => {
-			console.log("Connected to MongoDB");
-		})
-		.catch((e) => {
-			console.error(`Error ${e}`);
-		});
+export async function mongoConnect() {
+	try {
+	  await client.connect()
+	  const database = client.db('rubduck-layers')
+	  return database.collection('courses')
+	} catch (error) {
+	  console.error('Error al conectar a la base de datos')
+	  console.error(error)
+	  await client.close()
+	}
 }
-
-export default connectMongoDB;

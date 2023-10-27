@@ -1,9 +1,39 @@
-import mongoose from "mongoose"
+import { ObjectId } from 'mongodb'
+import { mongoConnect } from '../db/connection.js'
 
-const courseSchema = new mongoose.Schema({
-	title: { type: String, required: true },
-	description: { type: String, required: true },
-	language: { type: String, required: true },
-})
+export class CourseModel {
+	static async getAll() {
+		const db = await mongoConnect()
+		return db.find({}).toArray()
+	}
 
-export const courseModel = mongoose.model("courseModel", courseSchema)
+	static async getById({ id }) {
+		const db = await mongoConnect()
+		const objectId = new ObjectId(id)
+		return db.findOne({ _id: objectId })
+	}
+
+	static async create({ data }) {
+		const db = await mongoConnect()
+		await db.insertOne(data)
+		return data
+	}
+
+	static async delete({ id }) {
+		const db = await mongoConnect()
+		const objectId = new ObjectId(id)
+		const { deletedCount } = await db.deleteOne({ _id: objectId })
+		return deletedCount > 0
+	}
+	
+	static async update({ id, data }) {
+		const db = await mongoConnect()
+		const objectId = new ObjectId(id)
+
+		const { ok, value } = await db.findOneAndUpdate({ _id: objectId }, { $set: data }, { returnNewDocument: true })
+
+		if (!ok) return false
+
+		return value
+	}
+}
