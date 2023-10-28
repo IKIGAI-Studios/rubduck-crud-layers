@@ -1,0 +1,128 @@
+:root{
+    --primary: #3B5A9D;
+    --primary-hover: #2A3F6E;
+    --secondary: #FFA633;
+    --secondary-hover: #C48072;
+    --white: #F6F6F6;
+    --green: #8CCB51;
+    --red: #F44930;
+    
+    --red-darker: #953829;
+    --yellow: #F9EA47;
+    --black: #1e1e1e;
+
+    
+}
+
+body{
+    
+    font-family: 'jost';
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+@font-face {
+    font-family: 'jost';
+    src: url(../fonts/Jost-VariableFont_wght.ttf);
+}
+
+html, body{
+    background-color: var(--white);
+    font-family: 'jost';
+}
+
+nav{
+    justify-content: space-evenly;
+    align-content: space-between;
+    padding: 1rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;       
+}
+
+div#formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 50%;
+}
+
+div#formulario form input {
+    width: 100%;
+    padding: 10px 10px 10px 8px;
+    margin: 0.5rem 0;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--black);
+    box-sizing: border-box;
+}
+
+nav img{
+    height: 5rem;
+    width: auto;
+}
+
+table{
+    border: none;
+    margin-top: auto;
+}
+
+.card{
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.card span{
+    font-weight: bold;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+td{
+    padding: 0 2rem;
+}
+
+.btnEliminar{
+    background-color: var(--red);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow:  2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btnEliminar:hover{
+    background-color: var(--red-darker);
+}
+
+.btnEditar{
+    
+    background-color: var(--secondary);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow:  2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btnEditar:hover{
+    background-color: var(--secondary-hover);
+}

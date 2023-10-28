@@ -15,6 +15,9 @@ app.listen(PORT, () => {
     console.log(`Servidor en puerto ${PORT}`)
 })
 
+app.use('/client', express.static(process.cwd() + '/client'))
+
 app.use('/', (req, res) => {
-    res.sendFile(process.cwd() + '/index.html')
+    res.sendFile(process.cwd() + '/client/index.html')
 })
+

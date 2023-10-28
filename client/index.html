@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/client/css/styles.css">
+        <title>Rubduck Api REST por capas</title>
+        <script type="module">
+            const API_URL = 'https://rubduck-rest-api.onrender.com/courses'
+            
+            refreshCourses()
+
+
+            function refreshCourses() {
+                fetch(API_URL)
+                .then(res => res.json())
+                .then(courses => {
+                    const html = courses.map(course => {
+                    return `
+                        <article class="card" data-id="${course._id}">
+                            <h2>${course.titulo}</h2>
+                            <p>${course.descripcion}</p>
+                            <span>${course.lenguaje}</span>
+                            <br>
+                            <br>
+                            
+                            <button class="btnEditar">Editar</button>
+                            <button class="btnEliminar">Eliminar</button>
+                        </article>
+                    `
+                    }).join('')
+
+                    document.querySelector('#courses').innerHTML = html
+                })
+            }
+
+            document.addEventListener('click', e => {
+                if (e.target.matches('button.btnEliminar')) {
+                    const article = e.target.closest('article')
+                    const id = article.dataset.id
+
+                    fetch(`${API_URL}/${id}`, {
+                    method: 'DELETE'
+                    })
+                    .then(res => {
+                        if (res.ok) article.remove()
+                    })
+                }
+                else if (e.target.matches('button.btnEditar')) {
+                    const article = e.target.closest('article')
+                    const id = article.dataset.id
+
+                    const titulo = article.querySelector('h2').textContent
+                    const descripcion = article.querySelector('p').textContent
+                    const lenguaje = article.querySelector('span').textContent
+
+                    document.querySelector('#action').textContent = 'Editar'
+                    document.querySelector('#btnForm').textContent = 'Editar'
+
+                    document.querySelector('input[name="titulo"]').value = titulo
+                    document.querySelector('input[name="descripcion"]').value = descripcion
+                    document.querySelector('input[name="lenguaje"]').value = lenguaje
+
+                    document.querySelector('#formulario').dataset.id = id
+                }
+            })
+
+
+        </script>
+    </head>
+    <body>
+        <nav>
+            <img src="/client/img/logo.png" alt="RubDuck Logo">
+        </nav>
+        <h1>RubDuck Rest API por capas</h1>
+        <main>
+            <div id="formulario" class="card">
+                <h2 id="action">Insertar</h2>
+                <form action="">
+                    <input type="text" name="titulo" placeholder="Titulo">
+                    <input type="text" name="descripcion" placeholder="Descripcion">
+                    <input type="text" name="lenguaje" placeholder="Lenguaje">
+                    <button class="btnEditar" id="btnForm">Crear</button>
+                </form>
+            </div>
+            <h2>Cursos</h2>
+            <div id="courses"></div>
+        </main>
+    </body>
+</html>

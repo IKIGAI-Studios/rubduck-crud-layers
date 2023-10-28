@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "test.js",
+    "server": "nodemon index.js",
     "start": "node index.js"
   },
   "repository": {
