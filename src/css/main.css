@@ -1,0 +1,84 @@
+:root{
+    --primary: #3B5A9D;
+    --primary-hover: #2A3F6E;
+    --secondary: #FFA633;
+    --secondary-hover: #C48072;
+    --white: #F6F6F6;
+    --green: #8CCB51;
+    --red: #F44930;
+    
+    --red-darker: #953829;
+    --yellow: #F9EA47;
+    --black: #1e1e1e;
+
+}
+
+@font-face {
+    font-family: 'jost';
+    src: url(../fonts/Jost-VariableFont_wght.ttf);
+}
+
+html, body{
+    background-color: var(--primary);
+    font-family: 'jost';
+}
+
+nav{
+    justify-content: space-evenly;
+    align-content: space-between;
+    padding: 2rem;
+    
+}
+
+nav img{
+    height: 7rem;
+    width: auto;
+}
+
+table{
+    border: none;
+    margin-top: auto;
+}
+
+.card{
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: auto;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+td{
+    padding: 0 2rem;
+}
+
+.btnEliminar{
+    background-color: var(--red);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-left: 1rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow:  2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btnEliminar:hover{
+    background-color: var(--red-darker);
+}
+
+.btnEditar{
+    background-color: var(--secondary);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-left: 3rem;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold; 
+    box-shadow:  2px 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btnEditar:hover{
+    background-color: var(--secondary-hover);
+}
