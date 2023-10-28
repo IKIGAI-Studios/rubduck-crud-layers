@@ -30,10 +30,12 @@ export class CourseModel {
 		const db = await mongoConnect()
 		const objectId = new ObjectId(id)
 
-		const { ok, value } = await db.findOneAndUpdate({ _id: objectId }, { $set: data }, { returnNewDocument: true })
+		const res = await db.findOneAndUpdate({ _id: objectId }, { $set: data }, { returnNewDocument: true })
 
-		if (!ok) return false
+		if (!res) {
+			return false
+		}
 
-		return value
+		return res
 	}
 }

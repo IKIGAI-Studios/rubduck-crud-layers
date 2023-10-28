@@ -10,21 +10,59 @@
     --red-darker: #953829;
     --yellow: #F9EA47;
     --black: #1e1e1e;
-
-    
+}
+@font-face {
+    font-family: 'jost';
+    src: url(../fonts/Jost-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: 'belanosima';
+    src: url(../fonts/Belanosima-Regular.ttf);
 }
 
+a.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 1em;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold;
+}
+a.btn:hover {
+    outline: 2px solid var(--primary);
+}
+
+h2 {
+    font-family: 'belanosima';
+}
+
+
+.github-icon {
+    background-image: url(../svg/github.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 1.1em;
+    height: 1.1em;
+    margin-right: 0.5em;
+}
+
+
 body{
-    
     font-family: 'jost';
     box-sizing: border-box;
     font-size: 16px;
 }
 
-@font-face {
-    font-family: 'jost';
-    src: url(../fonts/Jost-VariableFont_wght.ttf);
-}
+
 
 html, body{
     background-color: var(--white);
@@ -32,6 +70,8 @@ html, body{
 }
 
 nav{
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     align-content: space-between;
     padding: 1rem;
@@ -61,6 +101,7 @@ div#formulario form input {
     font-size: 16px;
     color: var(--black);
     box-sizing: border-box;
+    font-family: 'jost';
 }
 
 nav img{
@@ -68,16 +109,13 @@ nav img{
     width: auto;
 }
 
-table{
-    border: none;
-    margin-top: auto;
-}
 
 .card{
     background-color: var(--white);
     color: var(--black);
     border-radius: 20px;
     padding: 2rem;
+    margin-bottom: 0.5rem;
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -126,3 +164,23 @@ td{
 .btnEditar:hover{
     background-color: var(--secondary-hover);
 }
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
