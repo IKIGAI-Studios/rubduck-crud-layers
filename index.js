@@ -14,3 +14,7 @@ app.use('/courses', courseRouter)
 app.listen(PORT, () => {
     console.log(`Servidor en puerto ${PORT}`)
 })
+
+app.use('/', (req, res) => {
+    res.sendFile(process.cwd() + '/index.html')
+})
